@@ -3,14 +3,46 @@ title       : Shiny Normal Curve
 subtitle    : Interactive Normal Curve Plot
 author      : Mark Jerome
 job         : na
-framework   : html5slides   # {io2012, html5slides, shower, dzslides, ...}
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
 widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 ---
 
-## Read-And-Delete
+## What is this Shiny app all about?
+
+The purpose of this Shiny app is to allow the user to develop intuition about the normal curve.
+
+It allows you to play around with a normal curve in the following ways:
+
+- Change the mean of the displayed distribution to any integer between -3 and 3 inclusive
+
+- Change the standard deviation of the displayed distribution between .5 and 6 in increments of .05
+
+- Choose the mininum and maximum x values to show on the plot
+
+- Zoom in on a portion of the plot by brushing
+
+
+## The following R code is evaluated and displayed
+
+```r
+library (ggplot2)
+```
+
+```
+## Warning: package 'ggplot2' was built under R version 3.3.3
+```
+
+```r
+xvalues <- seq(-6, 6, .1)
+yvalues <- dnorm(xvalues, 0, 1)
+g <- ggplot(data=data.frame(xvalues, yvalues), aes(x=xvalues, y=yvalues))
+g + geom_line() + labs(x="X", y="f(X)")
+```
+
+![plot of chunk unnamed-chunk-1](assets/fig/unnamed-chunk-1-1.png)
 
 1. Edit YAML front matter
 2. Write using R Markdown
