@@ -13,7 +13,9 @@
     media="only screen and (max-device-width: 480px)" >
   <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
   <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
-  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
 
   
   <!-- Grab CDN jQuery, fall back to local if offline -->
@@ -34,7 +36,7 @@
   <hgroup class="auto-fadein">
     <h1>Shiny Normal Curve</h1>
     <h2>Interactive Normal Curve Plot</h2>
-    <p>Mark Jerome<br/>na</p>
+    <p>Mark Jerome<br/>Solution Architect</p>
   </hgroup>
   <article></article>  
 </slide>
@@ -46,49 +48,95 @@
     <h2>What is this Shiny app all about?</h2>
   </hgroup>
   <article data-timings="">
-    <p>The purpose of this Shiny app is to allow the user to develop intuition about the normal curve.</p>
+    <p><br><br></p>
 
-<p>It allows you to play around with a normal curve in the following ways:</p>
+<p>The purpose of this Shiny app is to allow the user to develop intuition about the <strong>normal curve</strong>.</p>
+
+<p>It allows you to play around with a <strong>normal curve</strong> in the following ways:</p>
 
 <ul>
-<li><p>Change the mean of the displayed distribution to any integer between -3 and 3 inclusive</p></li>
-<li><p>Change the standard deviation of the displayed distribution between .5 and 6 in increments of .05</p></li>
-<li><p>Choose the mininum and maximum x values to show on the plot</p></li>
-<li><p>Zoom in on a portion of the plot by brushing</p></li>
+<li><p>Change the <strong>mean</strong> of the displayed distribution to any integer between -3 and 3 inclusive</p></li>
+<li><p>Change the <strong>standard deviation</strong> of the displayed distribution between .5 and 6 in increments of .05</p></li>
+<li><p>Choose the <strong>mininum</strong> and <strong>maximum</strong> x values to show on the plot</p></li>
+<li><p><strong>Zoom</strong> in on a portion of the plot by brushing</p></li>
 </ul>
-
-<h2>The following R code is evaluated and displayed</h2>
-
-<pre><code class="r">library (ggplot2)
-</code></pre>
-
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.3.3
-</code></pre>
-
-<pre><code class="r">xvalues &lt;- seq(-6, 6, .1)
-yvalues &lt;- dnorm(xvalues, 0, 1)
-g &lt;- ggplot(data=data.frame(xvalues, yvalues), aes(x=xvalues, y=yvalues))
-g + geom_line() + labs(x=&quot;X&quot;, y=&quot;f(X)&quot;)
-</code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1"></p>
-
-<ol>
-<li>Edit YAML front matter</li>
-<li>Write using R Markdown</li>
-<li>Use an empty line followed by three dashes to separate slides!</li>
-</ol>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="id" style="background:;">
+<slide class="" id="slide-2" style="background:;">
   <hgroup>
-    <h2>Slide 2</h2>
+    <h2>Review question</h2>
   </hgroup>
   <article data-timings="">
-    <p>The end</p>
+    
+<div class="quiz quiz-single well ">
+  <p>Which one of the following operations does this app implement?</p>
+
+<ol>
+<li>Click on plot.</li>
+<li>Hover over plot.</li>
+<li><em>Brush an area of the plot.</em></li>
+<li>Double click on plot.</li>
+</ol>
+
+  <button class="quiz-submit btn btn-primary">Submit</button>
+  <button class="quiz-toggle-hint btn btn-info">Show Hint</button>
+  <button class="quiz-show-answer btn btn-success">Show Answer</button>
+  <button class="quiz-clear btn btn-danger">Clear</button>
+  
+  <div class="quiz-hint">
+  <p><br>This operation is used to zoom in on a portion of the plot.</p>
+
+</div>
+<div class="quiz-explanation">
+  <p>This app implements <strong>brush</strong>ing an area of the plot.  Brushing is used to select a portion of the plot to zoom in on.</p>
+
+</div>
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Documentation is included in the app in its own tab</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><br><br>
+Following is an excerpt from the &quot;Docmentation&quot; tab:</p>
+
+<blockquote>
+<p>The main window has two tabs.  The tab labeled &quot;Plot&quot; displays the normal curve as you play around with it.  The tab labeled &quot;Documentation&quot; contains the text you are reading.</p>
+
+<p>The mean and the standard deviation of the displayed distribution can be changed by use of sliders labeled &quot;Mean:&quot; and &quot;Standard deviation:&quot;.</p>
+
+<p>The minimum and maximum x values to show on the plot can be chosen by use of the slider labeled &quot;Input range:&quot;.  If the minimum and maximum x values are set equal to each other, an error message will be displayed.</p>
+
+<p>Brushing an area of the display will zoom in using the minimum and maximum x values of the brushed area.  The values for the normal curve at these x values will be displayed.  An odd byproduct of this approach is brushing a blank area of the display will zoom in on the part of
+the normal curve corresponding to the chosen x values---not the blank area itself.</p>
+
+<p>To stop zooming and go back to the full normal curve, click anywhere outside of the brushed area.</p>
+</blockquote>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>How the plot looks when the app first starts</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>(R code evaluated and displayed)</h3>
+
+<pre><code class="r">x &lt;- seq(-6, 6, .1)
+y &lt;- dnorm(x, 0, 1)
+ggplot(data=data.frame(x, y), aes(x=x, y=y)) + geom_line() + labs(x=&quot;X&quot;, y=&quot;f(X)&quot;)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -106,8 +154,20 @@ g + geom_line() + labs(x=&quot;X&quot;, y=&quot;f(X)&quot;)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Slide 2'>
+        data-slide=2 title='Review question'>
          2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Documentation is included in the app in its own tab'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='How the plot looks when the app first starts'>
+         4
       </a>
     </li>
   </ul>
@@ -119,7 +179,19 @@ g + geom_line() + labs(x=&quot;X&quot;, y=&quot;f(X)&quot;)
   <![endif]-->
 </body>
   <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+
   
+  <script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
   <!-- LOAD HIGHLIGHTER JS FILES -->
   <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
