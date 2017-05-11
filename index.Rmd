@@ -10,7 +10,28 @@ widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 ---
 
-## Read-And-Delete
+## What is this Shiny app all about?
+
+The purpose of this Shiny app is to allow the user to develop intuition about the normal curve.
+
+It allows you to play around with a normal curve in the following ways:
+
+- Change the mean of the displayed distribution to any integer between -3 and 3 inclusive
+
+- Change the standard deviation of the displayed distribution between .5 and 6 in increments of .05
+
+- Choose the mininum and maximum x values to show on the plot
+
+- Zoom in on a portion of the plot by brushing
+
+
+## The following R code is evaluated and displayed
+```{r}
+xvalues <- seq(minx, maxx, .1)
+yvalues <- dnorm(xvalues, mu, sd)
+g <- ggplot(data=data.frame(xvalues, yvalues), aes(x=xvalues, y=yvalues))
+g + geom_line() + labs(x="X", y="f(X)")
+```
 
 1. Edit YAML front matter
 2. Write using R Markdown
