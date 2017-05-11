@@ -27,8 +27,9 @@ It allows you to play around with a normal curve in the following ways:
 
 ## The following R code is evaluated and displayed
 ```{r}
-xvalues <- seq(minx, maxx, .1)
-yvalues <- dnorm(xvalues, mu, sd)
+library (ggplot2)
+xvalues <- seq(-6, 6, .1)
+yvalues <- dnorm(xvalues, 0, 1)
 g <- ggplot(data=data.frame(xvalues, yvalues), aes(x=xvalues, y=yvalues))
 g + geom_line() + labs(x="X", y="f(X)")
 ```
